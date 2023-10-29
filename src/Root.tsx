@@ -5,7 +5,7 @@ export const RemotionRoot: React.FC = () => {
 		<>
 			<TextLinesVideo
 				text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-				duration={15}
+				duration={60}
 			/>
 		</>
 	);

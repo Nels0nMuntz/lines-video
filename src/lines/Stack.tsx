@@ -8,13 +8,11 @@ import {
 } from 'remotion';
 import TextLine, {TextLineProps} from './TextLine';
 
-type Data = Omit<TextLineProps, 'children'>;
-
 type TextLinesProps = {
 	text: string;
 };
 
-const data: Data[] = [
+const data1: TextLineProps[] = [
 	{speed: 3, color: '#C62148', isReverse: true},
 	{speed: 5, color: '#B79DB4', isReverse: true},
 	{speed: 6, color: '#D67720'},
@@ -35,26 +33,7 @@ const data: Data[] = [
 	{speed: 4, color: '#26BEDF', isReverse: true},
 ];
 
-const data2 = [
-	{children: 'Well done', speed: 3, color: '#C62148', isReverse: true},
-	{children: 'Well done', speed: 5, color: '#B79DB4', isReverse: true},
-	{children: 'Well done', speed: 6, color: '#D67720'},
-	{children: 'Well done', speed: 3.5, color: '#9ABBAF', isReverse: true},
-	{children: 'Well done', speed: 4, color: '#B7989B'},
-	{children: 'Well done', speed: 6, color: '#BB9BB7', isReverse: true},
-	{children: 'Well done', speed: 3, color: '#B5B7A0'},
-	{children: 'Well done', speed: 3.5, color: '#C47576', isReverse: true},
-	{children: 'Well done', speed: 3, color: '#79A1B7'},
-	{children: 'Well done', speed: 6, color: '#B476BB'},
-	{children: 'Well done', speed: 4, color: '#D44E51'},
-	{children: 'Well done', speed: 3.5, color: '#618FCD'},
-	{children: 'Well done', speed: 6, color: '#4FD376', isReverse: true},
-	{children: 'Well done', speed: 3, color: '#B7934D', isReverse: true},
-	{children: 'Well done', speed: 3, color: '#6E4593'},
-	{children: 'Well done', speed: 5, color: '#43A37C', isReverse: true},
-	{children: 'Well done', speed: 4, color: '#D67720'},
-	{children: 'Well done', speed: 4, color: '#26BEDF', isReverse: true},
-];
+const data2: TextLineProps[] = data1.map(item => ({ ...item, children: 'Well done!' }));
 
 export default function Stack({text}: TextLinesProps) {
 	const frame = useCurrentFrame();
@@ -86,13 +65,12 @@ export default function Stack({text}: TextLinesProps) {
 		[audioFateOutStartPoint, audioFateOutEndPoint],
 		[0, 1]
 	);
-	// Console.log([audioFateOutStartPoint, audioFateOutEndPoint]);
 
 	return (
 		<AbsoluteFill className="stack-bg">
 			<AbsoluteFill>
 				<div className="stack" style={{filter: `blur(${blur}px)`}}>
-					{data.map((props, index) => (
+					{data1.map((props, index) => (
 						<div style={{opacity: opacity1}}>
 							<TextLine {...props} key={index}>
 								{text}

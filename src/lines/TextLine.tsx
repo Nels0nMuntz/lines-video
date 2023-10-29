@@ -4,7 +4,7 @@ import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 export type TextLineProps = {
 	speed: number;
 	color: string;
-	children: string;
+	children?: string;
 	isReverse?: boolean;
 };
 
